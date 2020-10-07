@@ -1,7 +1,21 @@
+## Simple web server role
 class role::webserver {
-
-  #This role would be made of all the profiles that need to be included to make a webserver work
-  #All roles should include the base profile
   include profile::base
+  include profile::iis
+  include profile::users
 
+  iis_site { 'minimal':
+    ensure => 'started',
+    physicalpath => 'c:\\inetpub\\minimal',
+    applicationpool => 'DefaultAppPool',
+    require => [
+      File['minimal'],
+      Iis_site['Default Web Site']
+    ],
+  }
+
+  file { 'minimal':
+    ensure => 'directory'
+    path   => 'c:\\inetpub\\minimal'
+  }
 }

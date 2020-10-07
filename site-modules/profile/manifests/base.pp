@@ -1,5 +1,5 @@
+## Simple base profile
 class profile::base {
-
-  #the base profile should include component modules that will be on all nodes
-
+  # Set the power configuration.
+  include profile::power::power
 }

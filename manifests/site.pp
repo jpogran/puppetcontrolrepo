@@ -29,3 +29,17 @@ node default {
   # Example:
   #   class { 'my_class': }
 }
+
+# Set defaults for all `exec` resources
+Exec {
+  path      => $::path,
+  logoutput => true,
+}
+
+# Set Chocolatey as a provider
+case $operatingsystem {
+  'windows': {
+    Package { provider => chocolatey, }
+  }
+  default: {}
+}
