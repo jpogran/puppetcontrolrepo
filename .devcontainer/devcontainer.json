@@ -13,7 +13,10 @@
   "extensions": [
     "puppet.puppet-vscode",
     "rebornix.Ruby"
-  ]
+  ],
+  "containerEnv": {
+    "PDK_FEATURE_FLAGS": "controlrepo"
+  }
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
